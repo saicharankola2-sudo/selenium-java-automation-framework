@@ -1,0 +1,4 @@
+browser : chrome
+url : https://uitestingplayground.com/scrollbars
+headless : false
+timeout : 10
