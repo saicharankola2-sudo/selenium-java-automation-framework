@@ -3,8 +3,6 @@ name: Selenium Automation CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -20,5 +18,13 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Build and Run Tests
-      run: mvn clean test
+    - name: Run Tests
+      run: mvn clean test -Dheadless=true
+
+    - name: Upload Test Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-reports
+        path: |
+          target/
+          test-output/
